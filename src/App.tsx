@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { CareerList } from './components/careers/CareerList';
 import { useAuth } from './hooks/useAuth';
 import { ProtectedRoute } from './routes/ProtectedRoute';
+import { UserList } from './components/users/UserList';
 
 function App() {
   const { isAuthenticated, logout } = useAuth();
@@ -48,8 +49,13 @@ function App() {
             <CareerList />
           </ProtectedRoute>      
         } />
+        <Route path='/users' element= {
+          <ProtectedRoute>
+            <UserList/>
+          </ProtectedRoute>
+        } />
         <Route path='/' element={<Navigate to="/careers" />} />
-      </Routes>
+      </Routes>      
     </Router>
   )
 }
